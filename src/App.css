@@ -1,0 +1,284 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff, #f8fafc);
+  color: #1e293b;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.converter {
+  width: 100%;
+  max-width: 500px;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.12),
+    0 5px 15px rgba(15, 23, 42, 0.06);
+
+  transition: all 0.3s ease;
+}
+
+.converter:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.15),
+    0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.converter h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+}
+
+input,
+select {
+  width: 100%;
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #1e293b;
+  font-size: 15px;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+input:hover,
+select:hover {
+  border-color: #94a3b8;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
+.currency-row {
+  display: grid;
+  grid-template-columns: 1fr 55px 1fr;
+  align-items: end;
+  gap: 15px;
+
+  margin-top: 25px;
+}
+
+.swap {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.swap:hover {
+  background: #4f46e5;
+  color: white;
+  transform: rotate(180deg);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+}
+
+.swap:active {
+  transform: rotate(180deg) scale(0.92);
+}
+
+.convert {
+  width: 100%;
+  height: 52px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #7c3aed
+  );
+
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.convert:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 25px rgba(79, 70, 229, 0.3);
+}
+
+.convert:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.convert:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.3);
+  outline-offset: 3px;
+}
+
+.result {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    #eef2ff,
+    #f5f3ff
+  );
+
+  border: 1px solid #ddd6fe;
+  text-align: center;
+  animation: resultAppear 0.35s ease;
+}
+
+.result h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #312e81;
+  line-height: 1.5;
+}
+
+@keyframes resultAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .app {
+    padding: 15px;
+  }
+
+  .converter {
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+
+  .converter h1 {
+    font-size: 27px;
+    margin-bottom: 25px;
+  }
+
+  .currency-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .swap {
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+    transform: rotate(90deg);
+  }
+
+  .swap:hover {
+    transform: rotate(270deg);
+  }
+
+  .swap:active {
+    transform: rotate(270deg) scale(0.92);
+  }
+
+  input,
+  select {
+    height: 48px;
+  }
+
+  .convert {
+    height: 50px;
+  }
+
+  .result h2 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+
+  .converter {
+    padding: 22px 16px;
+  }
+
+  .converter h1 {
+    font-size: 24px;
+  }
+
+  .result {
+    padding: 16px;
+  }
+
+  .result h2 {
+    font-size: 16px;
+  }
+}
